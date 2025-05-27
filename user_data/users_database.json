@@ -1,0 +1,14 @@
+{
+    "user001": {
+        "name": "anhtonton",
+        "face_image": "C:\\Users\\Trant\\Documents\\AI_python\\face-detection\\user_data\\user001\\user001.jpg",
+        "created_at": "2025-05-21 12:58:10",
+        "last_recognized": "2025-05-21 13:01:10"
+    },
+    "user002": {
+        "name": "khiemdb",
+        "face_image": "C:\\Users\\Trant\\Documents\\AI_python\\face-detection\\user_data\\user002\\user002.jpg",
+        "created_at": "2025-05-21 12:59:50",
+        "last_recognized": "2025-05-21 13:01:10"
+    }
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý người dùng - Hệ thống nhận diện khuôn mặt</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Quản lý người dùng</h1>
+        
+        <div class="control-panel">
+            <button id="refreshButton">
+                <span class="icon">🔄</span>
+                Làm mới danh sách
+            </button>
+            
+            <a href="register.html" class="register-link">Thêm người dùng mới</a>
+            <a href="index.html" class="back-link">Quay lại trang chủ</a>
+        </div>
+        
+        <div class="search-filter">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm người dùng...">
+            <select id="sortSelect">
+                <option value="name">Sắp xếp theo tên</option>
+                <option value="id">Sắp xếp theo ID</option>
+                <option value="created_at">Sắp xếp theo ngày tạo</option>
+            </select>
+        </div>
+        
+        <div class="users-list" id="usersList">
+            <!-- Danh sách người dùng sẽ được hiển thị ở đây -->
+            <div class="loading-indicator">Đang tải danh sách người dùng...</div>
+        </div>
+        
+        <!-- Modal xem chi tiết người dùng -->
+        <div id="userDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 id="modalTitle">Chi tiết người dùng</h2>
+                
+                <div class="modal-body">
+                    <form id="userForm">
+                        <input type="hidden" id="userId">
+                        
+                        <div class="form-group">
+                            <label for="userName">Họ và tên:</label>
+                            <input type="text" id="userName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userEmail">Email:</label>
+                            <input type="email" id="userEmail">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userPhone">Số điện thoại:</label>
+                            <input type="tel" id="userPhone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userPosition">Chức vụ:</label>
+                            <input type="text" id="userPosition">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userDepartment">Phòng ban:</label>
+                            <input type="text" id="userDepartment">
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-save">Lưu thay đổi</button>
+                        </div>
+                    </form>
+                    
+                    <div class="face-images-section">
+                        <h3>Ảnh khuôn mặt</h3>
+                        <div class="face-images-container" id="faceImagesContainer">
+                            <!-- Ảnh khuôn mặt sẽ được hiển thị ở đây -->
+                        </div>
+                        
+                        <div class="add-face-section">
+                            <h4>Thêm ảnh khuôn mặt mới</h4>
+                            <div class="webcam-controls">
+                                <button type="button" id="startCameraButton" class="btn-camera">Bật camera</button>
+                                <button type="button" id="captureFaceButton" class="btn-capture" disabled>Chụp ảnh</button>
+                                <button type="button" id="saveFaceButton" class="btn-save" disabled>Lưu ảnh</button>
+                            </div>
+                            
+                            <div class="capture-container">
+                                <video id="webcamFace" autoplay playsinline style="display: none;"></video>
+                                <canvas id="canvasFace" style="display: none;"></canvas>
+                                <img id="capturedFace" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="danger-zone">
+                        <h3>Vùng nguy hiểm</h3>
+                        <button type="button" id="deleteUserButton" class="btn-danger">Xóa người dùng này</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal xác nhận xóa -->
+        <div id="confirmDeleteModal" class="modal">
+            <div class="modal-content modal-sm">
+                <h3>Xác nhận xóa</h3>
+                <p>Bạn có chắc chắn muốn xóa người dùng này? Hành động này không thể hoàn tác.</p>
+                <div class="modal-actions">
+                    <button id="confirmDeleteButton" class="btn-danger">Xóa</button>
+                    <button id="cancelDeleteButton" class="btn-secondary">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/webcam.js"></script>
+    <script src="js/users.js"></script>
+</body>
+</html>
